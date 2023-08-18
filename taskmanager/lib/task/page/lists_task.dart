@@ -5,7 +5,9 @@ import 'package:taskmanager/core/utils/style.dart';
 import 'package:taskmanager/logic/add_task.dart';
 import 'package:taskmanager/task.dart';
 
+///[TasksList] widget list all tasks
 class TasksList extends StatelessWidget {
+  ///initiliaze [TasksList]
   const TasksList({super.key});
 
   @override
@@ -13,15 +15,15 @@ class TasksList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Tasks List'),
+        title: const Text('Tasks List'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          AddNewTaskButton(),
+          const AddNewTaskButton(),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: AppStyles.spaceSmall,
                 right: AppStyles.spaceSmall,
               ),
@@ -41,11 +43,11 @@ class TasksList extends StatelessWidget {
                   return ListView.builder(
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
-                      DocumentSnapshot task = snapshot.data!.docs[index];
+                      final DocumentSnapshot task = snapshot.data!.docs[index];
                       return SingleTask(
-                        name: task['name'],
-                        startDate: task['startDate'],
-                        endDate: task['endDate'],
+                        name: task['name'] as String,
+                        startDate: task['startDate'] as String,
+                        endDate: task['endDate'] as String,
                       );
                     },
                   );

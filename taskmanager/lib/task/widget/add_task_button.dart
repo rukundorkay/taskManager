@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/core/utils/style.dart';
 import 'package:taskmanager/task.dart';
-
+///[AddNewTaskButton] add new task button
 class AddNewTaskButton extends StatelessWidget {
+  ///initiliaze[AddNewTaskButton]
   const AddNewTaskButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class AddNewTaskButton extends StatelessWidget {
         top: AppStyles.spaceDefault,
       ),
       child: ElevatedButton.icon(
-        icon: Icon(Icons.add),
+        icon: const Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push<void>(
             MaterialPageRoute(
@@ -23,7 +24,7 @@ class AddNewTaskButton extends StatelessWidget {
             ),
           );
         },
-        label: Text('New task'),
+        label: const Text('New task'),
       ),
     );
   }

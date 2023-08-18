@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-CollectionReference tasks = FirebaseFirestore.instance.collection('tasks');
+///[tasks] holds tasks collection from database
+final CollectionReference tasks =
+    FirebaseFirestore.instance.collection('tasks');
+
+///[addTask] add new task in the task manager
 Future<void> addTask({
   required String taskName,
   required String startDate,

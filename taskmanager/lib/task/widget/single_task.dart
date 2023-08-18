@@ -4,15 +4,21 @@ import 'package:taskmanager/core/utils/style.dart';
 
 ////[SingleTask] widget holds the information of an individual widget
 class SingleTask extends StatelessWidget {
+  ///initiliaze [SingleTask]
   const SingleTask({
-    Key? key,
+    super.key,
     required this.name,
     required this.startDate,
     required this.endDate,
-  }) : super(key: key);
+  });
 
+  ///task name
   final String name;
+
+  ///task startDate
   final String startDate;
+
+  ///task endDate
   final String endDate;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class SingleTask extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(AppStyles.radius)),
       ),
       child: ListTile(
-        leading: Icon(
+        leading: const Icon(
           Icons.task,
           size: AppStyles.spaceEnormous,
         ),
@@ -40,7 +46,7 @@ class SingleTask extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(' from $startDate'),
-              Text('-'),
+              const Text('-'),
               Text(' to $endDate'),
             ],
           ),

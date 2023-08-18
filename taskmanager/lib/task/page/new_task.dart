@@ -3,7 +3,9 @@ import 'package:taskmanager/core/utils/style.dart';
 import 'package:taskmanager/logic/add_task.dart';
 import 'package:taskmanager/logic/helpers/datepicker.dart';
 
+///[NewTask] widget support adding new task in task manager
 class NewTask extends StatefulWidget {
+  ///initiliaze [NewTask] widget
   const NewTask({super.key});
 
   @override
@@ -19,41 +21,44 @@ class _NewTaskState extends State<NewTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Task'),
+        title: const Text('New Task'),
         centerTitle: true,
       ),
-      body: Column(children: [
-        Taskfield(),
-        dateField(
-          context: context,
-          label: 'start Date',
-          hint: 'starting Date',
-          isStartingDate: true,
-        ),
-        dateField(
-          context: context,
-          label: 'end date',
-          hint: 'ending date',
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppStyles.spaceLarge),
-          child: ElevatedButton(
-            onPressed: () async {
-              await addTask(
-                taskName: taskController.text,
-                startDate: startDateController.text,
-                endDate: endDateController.text,
-              );
-              Navigator.pop(context);
-            },
-            child: Text('save '),
+      body: Column(
+        children: [
+          taskField(),
+          dateField(
+            context: context,
+            label: 'start Date',
+            hint: 'starting Date',
+            isStartingDate: true,
           ),
-        )
-      ]),
+          dateField(
+            context: context,
+            label: 'end date',
+            hint: 'ending date',
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppStyles.spaceLarge),
+            child: ElevatedButton(
+              onPressed: () async {
+                await addTask(
+                  taskName: taskController.text,
+                  startDate: startDateController.text,
+                  endDate: endDateController.text,
+                );
+                // ignore: use_build_context_synchronously
+                Navigator.pop(context);
+              },
+              child: const Text('save '),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  Container Taskfield() {
+  Widget taskField() {
     return Container(
       margin: const EdgeInsets.only(
         left: AppStyles.spaceMedium,
@@ -64,7 +69,7 @@ class _NewTaskState extends State<NewTask> {
         // autovalidateMode: AutovalidateMode.always,
         child: TextFormField(
           controller: taskController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'enter task',
             floatingLabelBehavior: FloatingLabelBehavior.always,
             label: Text(
@@ -79,8 +84,8 @@ class _NewTaskState extends State<NewTask> {
 
   Widget dateField({
     required BuildContext context,
-    required hint,
-    required label,
+    required String hint,
+    required String label,
     bool isStartingDate = false,
   }) {
     return Container(
@@ -107,7 +112,7 @@ class _NewTaskState extends State<NewTask> {
           floatingLabelBehavior: FloatingLabelBehavior.always,
           label: Text(
             label,
-            style: TextStyle(fontSize: AppStyles.spaceDefault),
+            style: const TextStyle(fontSize: AppStyles.spaceDefault),
           ),
         ),
       ),

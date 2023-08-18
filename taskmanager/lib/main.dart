@@ -11,7 +11,9 @@ void main() async {
   runApp(const MyApp());
 }
 
+///[MyApp]
 class MyApp extends StatelessWidget {
+  ///initiliaze Myapp
   const MyApp({super.key});
 
   @override
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: context.colors.primary),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: TasksList(),
+      home: const TasksList(),
     );
   }
 }
