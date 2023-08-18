@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Utility class that helps to access the colors used in the Pozo delivery app.
 class AppColors {
   AppColors._();
 
