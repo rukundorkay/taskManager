@@ -50,7 +50,13 @@ class _NewTaskState extends State<NewTask> {
                 // ignore: use_build_context_synchronously
                 Navigator.pop(context);
               },
-              child: const Text('save '),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppStyles.spaceLarge,
+                  vertical: AppStyles.spaceSmall,
+                ),
+                child: Text('save '),
+              ),
             ),
           )
         ],

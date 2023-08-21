@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/core/utils/extensions/context_extension.dart';
 import 'package:taskmanager/core/utils/style.dart';
+import 'package:taskmanager/logic/add_task.dart';
 
 ////[SingleTask] widget holds the information of an individual widget
 class SingleTask extends StatelessWidget {
@@ -10,7 +11,11 @@ class SingleTask extends StatelessWidget {
     required this.name,
     required this.startDate,
     required this.endDate,
+    required this.id,
   });
+
+  ///task id
+  final String id;
 
   ///task name
   final String name;
@@ -22,33 +27,39 @@ class SingleTask extends StatelessWidget {
   final String endDate;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(AppStyles.radius)),
-      ),
-      child: ListTile(
-        leading: const Icon(
-          Icons.task,
-          size: AppStyles.spaceEnormous,
+    return Dismissible(
+      key: Key(id),
+      onDismissed: (direction) async {
+        await tasks.doc(id).delete();
+      },
+      child: Card(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppStyles.radius)),
         ),
-        title: Text(
-          name,
-          style: TextStyle(
-            color: context.colors.primary,
-            fontWeight: FontWeight.w600,
+        child: ListTile(
+          leading: const Icon(
+            Icons.task,
+            size: AppStyles.spaceEnormous,
           ),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.only(
-            top: AppStyles.spaceTiny,
+          title: Text(
+            name,
+            style: TextStyle(
+              color: context.colors.primary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(' from $startDate'),
-              const Text('-'),
-              Text(' to $endDate'),
-            ],
+          subtitle: Padding(
+            padding: const EdgeInsets.only(
+              top: AppStyles.spaceTiny,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(' from $startDate'),
+                const Text('-'),
+                Text(' to $endDate'),
+              ],
+            ),
           ),
         ),
       ),

@@ -45,6 +45,7 @@ class TasksList extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final DocumentSnapshot task = snapshot.data!.docs[index];
                       return SingleTask(
+                        id: task.id,
                         name: task['name'] as String,
                         startDate: task['startDate'] as String,
                         endDate: task['endDate'] as String,
