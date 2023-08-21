@@ -37,9 +37,10 @@ class SingleTask extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(AppStyles.radius)),
         ),
         child: ListTile(
-          leading: const Icon(
+          leading: Icon(
             Icons.task,
             size: AppStyles.spaceEnormous,
+            color: context.colors.primary,
           ),
           title: Text(
             name,
